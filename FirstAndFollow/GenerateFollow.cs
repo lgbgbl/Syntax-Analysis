@@ -9,7 +9,7 @@ namespace SyntaxAnalysis
         {
             foreach (string token in inputGrammer.nonTerminalTokens)
                 followSet.Add(new Production(token, new List<string>()));
-            // 加入美元符号
+            // 加入$符号
             GetValuesByKey(inputGrammer.nonTerminalTokens[0], followSet).Add(ENDSYMBOL);
             int changeTotal;
             do

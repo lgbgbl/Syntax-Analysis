@@ -6,10 +6,11 @@ namespace SyntaxAnalysis
 {
     class ExpandException : Exception { public ExpandException(string msg) : base(msg) { } }
 
-
     class Degree
     {
+        // 出度
         public string degreeOut;
+        // 转换符
         public string translation;
 
         public override bool Equals(object obj)
@@ -34,6 +35,8 @@ namespace SyntaxAnalysis
     class DFANode
     {
         public string ID;
+
+        // 边信息
         public List<ProductionInLR0> productions;
 
         public DFANode(List<ProductionInLR0> productions, string ID)
@@ -42,7 +45,6 @@ namespace SyntaxAnalysis
             this.productions = productions;
         }
 
-        // 入度和出度
         public List<Degree> degrees = new List<Degree>();
         public override string ToString()
         {
@@ -62,16 +64,19 @@ namespace SyntaxAnalysis
         protected List<DFANode> DFANodes = new List<DFANode>();
 
         public List<DFANode> GetDFANodes { get { return DFANodes; } }
+
         public DFAGraphBase(InputGrammer inputGrammer)
         {
             this.inputGrammer = inputGrammer;
             if (!checkGrammer())
                 throw new ExpandException("文法需要扩充为增广文法");
         }
+
         private bool checkGrammer()
         {
             return inputGrammer[inputGrammer.userProductions[0].Key].Count == 1;
         }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -79,6 +84,7 @@ namespace SyntaxAnalysis
                 sb.AppendFormat("{0}\r\n", node.ToString());
             return sb.ToString();
         }
+
         protected List<string> getNextTokens(List<ProductionInLR0> productions)
         {
             List<string> generatedList = new List<string>();
@@ -101,7 +107,9 @@ namespace SyntaxAnalysis
             }
             return null;
         }
+
         abstract protected List<ProductionInLR0> closure(List<ProductionInLR0> productions);
+
         protected List<ProductionInLR0> goTo<T>(List<ProductionInLR0> productions, string translation) where T : ProductionInLR0
         {
             List<ProductionInLR0> generatedList = new List<ProductionInLR0>();
@@ -118,6 +126,7 @@ namespace SyntaxAnalysis
             }
             return closure(generatedList);
         }
+        
         protected void generateDFAGraph<T>(List<DFANode> DFANodes) where T : ProductionInLR0
         {
             for (int i = 0; i < DFANodes.Count; i++)
