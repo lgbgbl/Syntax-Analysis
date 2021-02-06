@@ -1,0 +1,47 @@
+~为Epsilon(即空串)
+
+
+S -> a A | b B
+A -> c d A | d
+B -> e f B | f
+
+
+E' -> E
+E -> E + T | T
+T -> T * F | F
+F -> ( E ) | i
+
+
+S -> A B C | D
+A -> a B | ~
+B -> c C | ~
+C -> e C | ~
+D -> i | j
+
+
+S -> A b B | B c
+A -> a A | ~
+B -> d | e
+
+
+A' -> A
+A -> ( A ) | a
+
+
+E' -> E
+E -> E + n | n
+
+
+S' -> S
+S -> ( S ) S | ~
+
+
+S' -> S
+S -> I | other
+I -> if S | if S else S
+
+S' -> S
+S -> id
+S -> V := E
+V -> id
+E -> V | n

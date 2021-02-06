@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91116856-5330-48F5-A096-A8162FB8619A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SyntaxAnalysis</RootNamespace>
+    <AssemblyName>SyntaxAnalysis</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analyze\Analyze.cs" />
+    <Compile Include="Analyze\LLAnalyze.cs" />
+    <Compile Include="Analyze\LRAnalyze.cs" />
+    <Compile Include="DFA\BaseDFA.cs" />
+    <Compile Include="DFA\LALR1DFA.cs" />
+    <Compile Include="DFA\LR0DFA.cs" />
+    <Compile Include="DFA\LR1DFA.cs" />
+    <Compile Include="FirstAndFollow\GenerateFirst.cs" />
+    <Compile Include="FirstAndFollow\GenerateFollow.cs" />
+    <Compile Include="Form\FormDFADictionary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDFADictionary.Designer.cs">
+      <DependentUpon>FormDFADictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFirstAndFollow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFirstAndFollow.Designer.cs">
+      <DependentUpon>FormFirstAndFollow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormInputSentence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormInputSentence.Designer.cs">
+      <DependentUpon>FormInputSentence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSyntaxAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSyntaxAnalysis.Designer.cs">
+      <DependentUpon>FormSyntaxAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputGrammer.cs" />
+    <Compile Include="Production\Production.cs" />
+    <Compile Include="Production\ProductionInLR0.cs" />
+    <Compile Include="Production\ProductionInLR1.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicFunc.cs" />
+    <Compile Include="Table\LALR1Table.cs" />
+    <Compile Include="Table\LL1Table.cs" />
+    <Compile Include="Table\LR0Table.cs" />
+    <Compile Include="Table\LR1Table.cs" />
+    <Compile Include="Table\LRTable.cs" />
+    <Compile Include="Table\SLR1Table.cs" />
+    <Compile Include="Table\Table.cs" />
+    <EmbeddedResource Include="Form\FormDFADictionary.resx">
+      <DependentUpon>FormDFADictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFirstAndFollow.resx">
+      <DependentUpon>FormFirstAndFollow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormInputSentence.resx">
+      <DependentUpon>FormInputSentence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSyntaxAnalysis.resx">
+      <DependentUpon>FormSyntaxAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
