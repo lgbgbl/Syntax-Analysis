@@ -11,7 +11,6 @@ namespace SyntaxAnalysis
         {
             this.dFAGraph = dFAGraph;
         }
-        abstract protected bool setAcceptOrReduce(string row, ProductionInLR0 production);
         protected void generateLRTable()
         {
             foreach (DFANode node in dFAGraph.GetDFANodes)
@@ -43,6 +42,8 @@ namespace SyntaxAnalysis
                 }
             }
         }
+
+        abstract protected void setAcceptOrReduce(string row, ProductionInLR0 production);
 
         protected void setShiftOrGoto(string row, string col, string data)
         {

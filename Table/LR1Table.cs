@@ -7,7 +7,7 @@ namespace SyntaxAnalysis
         {
             generateLRTable();
         }
-        protected override bool setAcceptOrReduce(string row, ProductionInLR0 production)
+        protected override void setAcceptOrReduce(string row, ProductionInLR0 production)
         {
             if (production.Key == inputGrammer.nonTerminalTokens[0])
                 table.Add(new Item(row, PublicFunc.ENDSYMBOL, PublicFunc.ACCOMPLISH));
@@ -22,7 +22,6 @@ namespace SyntaxAnalysis
                         table.Add(item);
                 }
             }
-            return true;
         }
     }
 }

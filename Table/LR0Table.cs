@@ -9,7 +9,7 @@ namespace SyntaxAnalysis
         {
             generateLRTable();
         }
-        protected override bool setAcceptOrReduce(string row, ProductionInLR0 production)
+        protected override void setAcceptOrReduce(string row, ProductionInLR0 production)
         {
             bool hasStartSymbol = production.Key == inputGrammer.nonTerminalTokens[0];
             // 防止将acc覆盖
@@ -24,7 +24,6 @@ namespace SyntaxAnalysis
                 if (!table.Contains(item))
                     table.Add(item);
             }
-            return true;
         }
     }
 }
