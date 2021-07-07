@@ -38,7 +38,9 @@ namespace SyntaxAnalysis
                             }
                         }
                         if (!noNeedToAdd)
+                        {
                             generatedList.Add(newProduction);
+                        }
                     }
                 }
             }

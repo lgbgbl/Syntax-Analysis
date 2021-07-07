@@ -16,7 +16,9 @@ namespace SyntaxAnalysis
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
+            {
                 return false;
+            }
 
             Degree degree = obj as Degree;
             return degreeOut.Equals(degree.degreeOut) && translation.Equals(degree.translation);
@@ -103,7 +105,9 @@ namespace SyntaxAnalysis
             {
                 // 差集个数为0，即两个List内容相同
                 if (DFANode.productions.Except(productions).Count() == 0 && productions.Except(DFANode.productions).Count() == 0)
+                {
                     return DFANode.ID;
+                }
             }
             return null;
         }
@@ -126,7 +130,7 @@ namespace SyntaxAnalysis
             }
             return closure(generatedList);
         }
-        
+
         protected void generateDFAGraph<T>(List<DFANode> DFANodes) where T : ProductionInLR0
         {
             for (int i = 0; i < DFANodes.Count; i++)

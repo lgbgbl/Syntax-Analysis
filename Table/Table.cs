@@ -14,9 +14,13 @@ namespace SyntaxAnalysis
                 if (isLRTable)
                 {
                     if (oldData[0] == 'r' && item.data[0] == 'r')
+                    {
                         reason += "发生了规约-规约冲突";
+                    }
                     else
+                    {
                         reason += "发生了移入-规约冲突";
+                    }
                 }
                 reason += string.Format("\r\n原表项为{0}\r\n新表项为{1}\r\n\r\n", oldData, item.data);
             }
@@ -31,7 +35,9 @@ namespace SyntaxAnalysis
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
+            {
                 return false;
+            }
             Item item = obj as Item;
             return item.row.Equals(row) && item.col.Equals(col) && item.data.Equals(data);
         }
@@ -73,8 +79,12 @@ namespace SyntaxAnalysis
             get
             {
                 foreach (Item item in table)
+                {
                     if (item.row.Equals(inputItem.row) && item.col.Equals(inputItem.col))
+                    {
                         return item.data;
+                    }
+                }
                 return null;
             }
         }

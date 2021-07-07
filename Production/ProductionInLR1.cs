@@ -8,7 +8,10 @@ namespace SyntaxAnalysis
         public List<string> searchTokens;
 
 
-        public ProductionInLR1(Production production, List<string> searchTokens) : base(production) { this.searchTokens = searchTokens; }
+        public ProductionInLR1(Production production, List<string> searchTokens) : base(production)
+        {
+            this.searchTokens = searchTokens;
+        }
 
         public ProductionInLR1(ProductionInLR1 production) : base(production)
         {
@@ -21,17 +24,20 @@ namespace SyntaxAnalysis
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("{0} , ", base.ToString());
             for (int i = 0; i < searchTokens.Count; i++)
-                if (i != searchTokens.Count - 1)
-                    sb.AppendFormat("{0}/", searchTokens[i]);
-                else
-                    sb.Append(searchTokens[i]);
+            {
+                sb.Append(searchTokens[i]);
+                sb.Append(i != searchTokens.Count - 1 ? "/" : "");
+            }
             return sb.ToString();
         }
 
         public override bool Equals(object obj)
         {
             ProductionInLR1 production = obj as ProductionInLR1;
-            return base.Equals(obj) && searchTokens.Except(production.searchTokens).Count() == 0 && production.searchTokens.Except(searchTokens).Count() == 0;
+            return
+                base.Equals(obj) &&
+                searchTokens.Except(production.searchTokens).Count() == 0 &&
+                production.searchTokens.Except(searchTokens).Count() == 0;
         }
 
         public override int GetHashCode() { return base.GetHashCode(); }

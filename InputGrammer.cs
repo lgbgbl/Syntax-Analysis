@@ -52,19 +52,31 @@ namespace SyntaxAnalysis
 
                     // 保存非终结符号
                     if (!nonTerminalTokens.Contains(leftPart))
+                    {
                         nonTerminalTokens.Add(leftPart);
+                    }
                 }
                 else
+                {
                     total++;
+                }
             }
+
+
             // 全都无法匹配
             if (total == lines.Length)
+            {
                 throw new NoValidGrammerException("无法找到有效文法");
+            }
 
             // 保存终结符号
             foreach (Production production in userProductions)
+            {
                 foreach (string value in production.Values.Where(i => (!nonTerminalTokens.Contains(i) && !terminalTokens.Contains(i))))
+                {
                     terminalTokens.Add(value);
+                }
+            }
 
         }
 
@@ -74,7 +86,9 @@ namespace SyntaxAnalysis
             {
                 List<Production> generatedList = new List<Production>();
                 foreach (Production production in userProductions.Where(i => i.Key == key))
+                {
                     generatedList.Add(production);
+                }
                 return generatedList;
             }
         }

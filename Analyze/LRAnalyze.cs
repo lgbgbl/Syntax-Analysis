@@ -16,7 +16,9 @@ namespace SyntaxAnalysis
             statusStack.Push("0");
             inputStack.Push(PublicFunc.ENDSYMBOL);
             for (int i = inputTokens.Count - 1; i >= 0; i--)
+            {
                 inputStack.Push(inputTokens[i]);
+            }
             for (; ; )
             {
                 statusProcess.Add(getStrFromStack(statusStack));
@@ -45,7 +47,9 @@ namespace SyntaxAnalysis
                     for (int i = values.Count - 1; i >= 0; i--)
                     {
                         if (values[i] != tokenStack.Peek())
+                        {
                             break;
+                        }
                         tokenStack.Pop();
                         statusStack.Pop();
                     }

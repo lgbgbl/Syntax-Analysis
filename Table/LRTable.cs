@@ -27,10 +27,14 @@ namespace SyntaxAnalysis
                         string token = production.NextTokenOfPoint;
                         // 接收或者规约
                         if (token == null)
+                        {
                             setAcceptOrReduce(ID, production);
+                        }
                         // 移入或goto
                         else if (token == translation)
+                        {
                             setShiftOrGoto(ID, token, dstID);
+                        }
                     }
                 }
                 //该项集点符号都在最后面
@@ -38,7 +42,9 @@ namespace SyntaxAnalysis
                 {
                     List<ProductionInLR0> productions = node.productions;
                     foreach (ProductionInLR0 production in productions)
+                    {
                         setAcceptOrReduce(ID, production);
+                    }
                 }
             }
         }
@@ -47,23 +53,26 @@ namespace SyntaxAnalysis
 
         protected void setShiftOrGoto(string row, string col, string data)
         {
-            Item item;
-            if (inputGrammer.nonTerminalTokens.Contains(col))
-                item = new Item(row, col, data);
-            else
-                item = new Item(row, col, "s" + data);
+            Item item = inputGrammer.nonTerminalTokens.Contains(col) ?
+                new Item(row, col, data) :
+                new Item(row, col, "s" + data);
             checkConflict(item);
             if (!table.Contains(item))
+            {
                 table.Add(item);
+            }
         }
 
 
         protected override void checkConflict(Item newItem)
         {
             foreach (Item item in table)
+            {
                 if (item.conflictWith(newItem))
+                {
                     throw new ConflictException("分析表具有二义性", true, item.data, newItem);
+                }
+            }
         }
-
     }
 }

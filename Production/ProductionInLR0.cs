@@ -1,10 +1,5 @@
-
-using System.Reflection.Emit;
-
-using System.Collections.Generic;
 using System.Text;
 
-using System.Linq;
 namespace SyntaxAnalysis
 {
     class ProductionInLR0 : Production
@@ -27,19 +22,27 @@ namespace SyntaxAnalysis
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("{0} --> ", key);
             for (int i = 0; i < pointPos; i++)
-            { 
+            {
                 if (i != pointPos - 1)
+                {
                     sb.AppendFormat("{0} ", values[i]);
+                }
                 else
+                {
                     sb.Append(values[i]);
+                }
             }
             sb.AppendFormat(" {0} ", PublicFunc.POINTSYMBOL);
             for (int i = pointPos; i < values.Count; i++)
-            { 
+            {
                 if (i != values.Count - 1)
+                {
                     sb.AppendFormat("{0} ", values[i]);
+                }
                 else
+                {
                     sb.Append(values[i]);
+                }
             }
             return sb.ToString();
         }
@@ -48,7 +51,9 @@ namespace SyntaxAnalysis
         {
             // 点符号前进至最后Epsilon后面
             for (int i = 0; i < values.Count && values[i] == PublicFunc.EPSILON; i++)
+            {
                 pointForward();
+            }
         }
 
         public ProductionInLR0(ProductionInLR0 production) : base(production.Key, production.Values)
@@ -60,7 +65,9 @@ namespace SyntaxAnalysis
             get
             {
                 if (pointPos != values.Count)
+                {
                     return values[pointPos];
+                }
                 return null;
             }
         }

@@ -38,9 +38,13 @@ namespace SyntaxAnalysis
                         }
                         // 建立 被合并与合并关系
                         if (!relations.ContainsKey(i))
+                        {
                             relations.Add(i, new List<int>() { j });
+                        }
                         else
+                        {
                             relations[i].Add(j);
+                        }
                         // 添加即将删除的项集ID
                         merged.Add(DFANodes[j].ID);
                     }

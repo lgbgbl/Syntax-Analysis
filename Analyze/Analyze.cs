@@ -53,14 +53,20 @@ namespace SyntaxAnalysis
                         pos += terminalTokens[i].Length;
                         //未结束就再次重新查找
                         if (pos != token.Length)
+                        {
                             i = -1;
+                        }
                         else
+                        {
                             break;
+                        }
                     }
                 }
                 //没有遍历完就结束了，即含有无法识别的终结符号
                 if (pos != token.Length)
+                {
                     throw new FailToAnalyzeException(string.Format("含有无法识别的终结符号{0}", token.Substring(pos)));
+                }
             }
             return generatedList;
         }

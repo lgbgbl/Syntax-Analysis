@@ -14,7 +14,9 @@ namespace SyntaxAnalysis
             nonTerminalTokens = inputGrammer.nonTerminalTokens;
             // 初始化first集合
             foreach (string token in inputGrammer.nonTerminalTokens)
+            {
                 firstSet.Add(new Production(token, new List<string>()));
+            }
             int changeTotal;
             do
             {
@@ -44,9 +46,13 @@ namespace SyntaxAnalysis
                             bool hasEpsilon = false;
                             List<string> valuesOfTokenInFirst = GetValuesByKey(token, firstSet);
                             if (ExtendElementWithoutEpsilon(valuesOfTokenInFirst, valuesInFirst, ref hasEpsilon))
+                            {
                                 changeTotal++;
+                            }
                             if (!hasEpsilon)
+                            {
                                 break;
+                            }
                         }
                     }
                     if (i == production.Values.Count && !valuesInFirst.Contains(EPSILON))
@@ -66,7 +72,9 @@ namespace SyntaxAnalysis
             {
                 sb.AppendFormat("First({0}) =  ", production.Key);
                 for (int i = 0; i < production.Values.Count; i++)
+                {
                     sb.AppendFormat("{0}  ", production.Values[i]);
+                }
                 sb.Append("\r\n\r\n");
             }
             return sb.ToString();
@@ -97,19 +105,29 @@ namespace SyntaxAnalysis
                 bool hasEpsilon = false;
                 // 非终结符号
                 if (nonTerminalTokens.Contains(src[i]))
+                {
                     ExtendElementWithoutEpsilon(GetValuesByKey(src[i], firstSet), generatedList, ref hasEpsilon);
+                }
                 else
                 {
                     if (src[i] != EPSILON)
+                    {
                         generatedList.Add(src[i]);
+                    }
                     else
+                    {
                         hasEpsilon = true;
+                    }
                 }
 
                 if (!hasEpsilon)
+                {
                     break;
+                }
                 else if (i == src.Count - 1)
+                {
                     generatedList.Add(EPSILON);
+                }
             }
             return generatedList;
         }

@@ -24,7 +24,9 @@ namespace SyntaxAnalysis
                     {
                         ProductionInLR0 newProduction = new ProductionInLR0(production);
                         if (!generatedList.Contains(newProduction))
+                        {
                             generatedList.Add(newProduction);
+                        }
                     }
                 }
             }

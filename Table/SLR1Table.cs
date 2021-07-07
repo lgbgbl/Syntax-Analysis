@@ -17,7 +17,9 @@ namespace SyntaxAnalysis
         protected override void setAcceptOrReduce(string row, ProductionInLR0 production)
         {
             if (production.Key == inputGrammer.nonTerminalTokens[0])
+            {
                 table.Add(new Item(row, PublicFunc.ENDSYMBOL, PublicFunc.ACCOMPLISH));
+            }
             else
             {
                 foreach (string token in generatedFollow[production.Key])
@@ -25,7 +27,9 @@ namespace SyntaxAnalysis
                     Item item = new Item(row, token, "r" + Convert.ToString(inputGrammer.userProductions.IndexOf(production)));
                     checkConflict(item);
                     if (!table.Contains(item))
+                    {
                         table.Add(item);
+                    }
                 }
             }
         }

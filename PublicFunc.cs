@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-
 namespace SyntaxAnalysis
 {
     class PublicFunc
@@ -8,6 +7,8 @@ namespace SyntaxAnalysis
         public static string ENDSYMBOL = "$";
         public static string POINTSYMBOL = ".";
         public static string ACCOMPLISH = "acc";
+
+
         protected bool ExtendElement(List<string> src, List<string> dst)
         {
             bool hasChange = false;
@@ -35,7 +36,9 @@ namespace SyntaxAnalysis
                     }
                 }
                 else
+                {
                     hasEpsilon = true;
+                }
             }
             return hasChange;
         }
@@ -43,8 +46,12 @@ namespace SyntaxAnalysis
         protected List<string> GetValuesByKey(string key, List<Production> productions)
         {
             foreach (Production production in productions)
+            {
                 if (production.Key.Equals(key))
+                {
                     return production.Values;
+                }
+            }
             return null;
         }
 

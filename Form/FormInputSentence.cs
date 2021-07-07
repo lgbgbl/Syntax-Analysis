@@ -52,14 +52,24 @@ namespace SyntaxAnalysis
                 dataGridView.Columns[ii].SortMode = DataGridViewColumnSortMode.NotSortable;
                 // "输入"一列 向右对齐
                 if (ii == headers.Length - 2)
+                {
                     dataGridView.Columns[ii].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
             }
             if (table is LL1Table)
+            {
                 for (int i = 0; i < analyze.tokenProcess.Count; i++)
+                {
                     dataGridView.Rows.Add(Convert.ToString(i + 1), analyze.tokenProcess[i], analyze.inputProcess[i], analyze.actionProcess[i]);
+                }
+            }
             else
+            {
                 for (int i = 0; i < analyze.tokenProcess.Count; i++)
+                {
                     dataGridView.Rows.Add(Convert.ToString(i + 1), analyze.statusProcess[i], analyze.tokenProcess[i], analyze.inputProcess[i], analyze.actionProcess[i]);
+                }
+            }
 
         }
     }
