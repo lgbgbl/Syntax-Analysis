@@ -1,33 +1,31 @@
-namespace SyntaxAnalysis
+namespace SyntaxAnalysis;
+class DFAGraphFromLR0 : DFAGraphBase
 {
-    class DFAGraphFromLR0 : DFAGraphBase
+    public DFAGraphFromLR0(InputGrammer inputGrammer) : base(inputGrammer)
     {
-        public DFAGraphFromLR0(InputGrammer inputGrammer) : base(inputGrammer)
-        {
-            DFANodes.Add(new DFANode(closure(new List<ProductionInLR0> { new ProductionInLR0(inputGrammer.userProductions[0]) }), Convert.ToString(DFANodes.Count)));
-            generateDFAGraph<ProductionInLR0>(DFANodes);
-        }
+        DFANodes.Add(new DFANode(closure(new List<ProductionInLR0> { new ProductionInLR0(inputGrammer.userProductions[0]) }), Convert.ToString(DFANodes.Count)));
+        generateDFAGraph<ProductionInLR0>(DFANodes);
+    }
 
-        protected override List<ProductionInLR0> closure(List<ProductionInLR0> productions)
+    protected override List<ProductionInLR0> closure(List<ProductionInLR0> productions)
+    {
+        List<ProductionInLR0> generatedList = new List<ProductionInLR0>();
+        generatedList.AddRange(productions);
+        for (int i = 0; i < generatedList.Count; i++)
         {
-            List<ProductionInLR0> generatedList = new List<ProductionInLR0>();
-            generatedList.AddRange(productions);
-            for (int i = 0; i < generatedList.Count; i++)
+            List<string> nextTokens = getNextTokens(generatedList);
+            foreach (string token in nextTokens.Where(ii => (inputGrammer.nonTerminalTokens.Contains(ii))))
             {
-                List<string> nextTokens = getNextTokens(generatedList);
-                foreach (string token in nextTokens.Where(ii => (inputGrammer.nonTerminalTokens.Contains(ii))))
+                foreach (Production production in inputGrammer[token])
                 {
-                    foreach (Production production in inputGrammer[token])
+                    ProductionInLR0 newProduction = new ProductionInLR0(production);
+                    if (!generatedList.Contains(newProduction))
                     {
-                        ProductionInLR0 newProduction = new ProductionInLR0(production);
-                        if (!generatedList.Contains(newProduction))
-                        {
-                            generatedList.Add(newProduction);
-                        }
+                        generatedList.Add(newProduction);
                     }
                 }
             }
-            return generatedList;
         }
+        return generatedList;
     }
 }

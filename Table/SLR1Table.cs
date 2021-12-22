@@ -1,32 +1,30 @@
-namespace SyntaxAnalysis
+namespace SyntaxAnalysis;
+class SLR1Table : LRTable
 {
-    class SLR1Table : LRTable
+    protected GenerateFollow generatedFollow;
+
+    public SLR1Table(DFAGraphBase DFAGraph, InputGrammer inputGrammer) : base(DFAGraph, inputGrammer)
     {
-        protected GenerateFollow generatedFollow;
+        GenerateFirst generatedFirst = new GenerateFirst(inputGrammer);
+        generatedFollow = new GenerateFollow(inputGrammer, generatedFirst);
+        generateLRTable();
+    }
 
-        public SLR1Table(DFAGraphBase DFAGraph, InputGrammer inputGrammer) : base(DFAGraph, inputGrammer)
+    protected override void setAcceptOrReduce(string row, ProductionInLR0 production)
+    {
+        if (production.Key == inputGrammer.nonTerminalTokens[0])
         {
-            GenerateFirst generatedFirst = new GenerateFirst(inputGrammer);
-            generatedFollow = new GenerateFollow(inputGrammer, generatedFirst);
-            generateLRTable();
+            table.Add(new Item(row, PublicFunc.ENDSYMBOL, PublicFunc.ACCOMPLISH));
         }
-
-        protected override void setAcceptOrReduce(string row, ProductionInLR0 production)
+        else
         {
-            if (production.Key == inputGrammer.nonTerminalTokens[0])
+            foreach (string token in generatedFollow[production.Key])
             {
-                table.Add(new Item(row, PublicFunc.ENDSYMBOL, PublicFunc.ACCOMPLISH));
-            }
-            else
-            {
-                foreach (string token in generatedFollow[production.Key])
+                Item item = new Item(row, token, "r" + Convert.ToString(inputGrammer.userProductions.IndexOf(production)));
+                checkConflict(item);
+                if (!table.Contains(item))
                 {
-                    Item item = new Item(row, token, "r" + Convert.ToString(inputGrammer.userProductions.IndexOf(production)));
-                    checkConflict(item);
-                    if (!table.Contains(item))
-                    {
-                        table.Add(item);
-                    }
+                    table.Add(item);
                 }
             }
         }
