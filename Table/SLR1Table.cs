@@ -1,6 +1,3 @@
-using System.Data.Common;
-using System.Collections.Generic;
-using System;
 namespace SyntaxAnalysis
 {
     class SLR1Table : LRTable

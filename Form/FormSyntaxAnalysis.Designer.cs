@@ -1,6 +1,3 @@
-
-using System;
-
 namespace SyntaxAnalysis
 {
     partial class FormSyntaxAnalysis

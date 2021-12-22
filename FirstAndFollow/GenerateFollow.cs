@@ -1,5 +1,4 @@
 using System.Text;
-using System.Collections.Generic;
 namespace SyntaxAnalysis
 {
     class GenerateFollow : PublicFunc

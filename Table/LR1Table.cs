@@ -1,4 +1,3 @@
-using System;
 namespace SyntaxAnalysis
 {
     class LR1Table : LRTable

@@ -1,4 +1,3 @@
-
 namespace SyntaxAnalysis
 {
     partial class FormDFADictionary

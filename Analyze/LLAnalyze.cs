@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-
-
 namespace SyntaxAnalysis
 {
     class LLAnalyze : Analyze

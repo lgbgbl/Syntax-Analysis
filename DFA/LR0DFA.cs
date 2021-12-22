@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace SyntaxAnalysis
 {
     class DFAGraphFromLR0 : DFAGraphBase

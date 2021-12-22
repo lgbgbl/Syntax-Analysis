@@ -1,6 +1,3 @@
-using System;
-using System.Windows.Forms;
-
 namespace SyntaxAnalysis
 {
     public partial class FormInputSentence : Form
