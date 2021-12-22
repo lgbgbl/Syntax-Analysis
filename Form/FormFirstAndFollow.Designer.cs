@@ -1,4 +1,4 @@
-﻿
+
 namespace SyntaxAnalysis
 {
     partial class FormFirstAndFollow

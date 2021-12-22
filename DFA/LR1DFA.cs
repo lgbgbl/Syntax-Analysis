@@ -27,7 +27,7 @@ namespace SyntaxAnalysis
                     foreach (Production production in inputGrammer[token])
                     {
                         ProductionInLR1 newProduction = new ProductionInLR1(production, generatedFirst.getFirstFromPart(oldProduction.Values, oldProduction.PointPos + 1, oldProduction.searchTokens));
-                        // 检查项集内是否有同心项（或者完全相同），有则不添加
+                        // 妫�鏌ラ」闆嗗唴鏄惁鏈夊悓蹇冮」锛堟垨鑰呭畬鍏ㄧ浉鍚岋級锛屾湁鍒欎笉娣诲姞
                         bool noNeedToAdd = false;
                         foreach (ProductionInLR1 production1 in generatedList)
                         {
