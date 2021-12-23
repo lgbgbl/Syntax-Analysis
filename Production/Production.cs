@@ -51,17 +51,7 @@ public class Production
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendFormat("{0} --> ", key);
-        for (int i = 0; i < values.Count; i++)
-        {
-            if (i != values.Count - 1)
-            {
-                sb.AppendFormat("{0} ", values[i]);
-            }
-            else
-            {
-                sb.Append(values[i]);
-            }
-        }
+        sb.Append(string.Join(' ', values));
         return sb.ToString();
     }
 }

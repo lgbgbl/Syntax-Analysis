@@ -20,29 +20,9 @@ class ProductionInLR0 : Production
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendFormat("{0} --> ", key);
-        for (int i = 0; i < pointPos; i++)
-        {
-            if (i != pointPos - 1)
-            {
-                sb.AppendFormat("{0} ", values[i]);
-            }
-            else
-            {
-                sb.Append(values[i]);
-            }
-        }
+        sb.Append(string.Join(' ', values.GetRange(0, pointPos)));
         sb.AppendFormat(" {0} ", PublicFunc.POINTSYMBOL);
-        for (int i = pointPos; i < values.Count; i++)
-        {
-            if (i != values.Count - 1)
-            {
-                sb.AppendFormat("{0} ", values[i]);
-            }
-            else
-            {
-                sb.Append(values[i]);
-            }
-        }
+        sb.Append(String.Join(' ', values.GetRange(pointPos, values.Count - pointPos)));
         return sb.ToString();
     }
 

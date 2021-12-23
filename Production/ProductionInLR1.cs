@@ -20,11 +20,7 @@ class ProductionInLR1 : ProductionInLR0
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendFormat("{0} , ", base.ToString());
-        for (int i = 0; i < searchTokens.Count; i++)
-        {
-            sb.Append(searchTokens[i]);
-            sb.Append(i != searchTokens.Count - 1 ? "/" : "");
-        }
+        sb.Append(string.Join('/', searchTokens));
         return sb.ToString();
     }
 
