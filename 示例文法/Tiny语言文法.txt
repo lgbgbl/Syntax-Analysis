@@ -13,3 +13,26 @@ addop -> + | -
 term ->term mulop factor | factor
 mulop -> * | /
 factor ->( exp ) | number | identifier
+
+
+
+program -> stmt-sequence
+stmt-sequence -> stmt-sequence ; statement | statement
+statement -> if-stmt | repeat-stmt | maybe-assign-stmt | read-stmt | write-stmt | while-stmt | dowhile-stmt | for-stmt
+if-stmt -> if ( exp ) stmt-sequence else stmt-sequence endif | if ( exp ) stmt-sequence endif
+repeat -> repeat stmt-sequence until exp
+maybe-assign-stmt -> identifier := exp | identifier += exp | identifier -= exp
+read-stmt -> read identifier
+write-stmt -> write exp
+while-stmt -> while ( exp ) stmt-sequence endwhile
+dowhile-stmt -> do stmt-sequence while(exp)
+for-stmt -> for identifier := simple-exp to simple-exp do stmt-sequence enddo | for identifier := simple-exp downto simple-exp do stmt-sequence enddo
+exp -> simple-exp comparision-op simple-exp | simple-exp
+comparision-op -> < | = | <> | <=
+simple-exp -> simple-exp addop term | term
+addop -> + | -
+term -> term mulop power | power
+mulop -> * | / | %
+power -> power mi factor | factor
+mi -> ^
+factor -> ( exp ) | number | identifier
