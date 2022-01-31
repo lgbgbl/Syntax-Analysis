@@ -31,12 +31,10 @@ public class Item
 
     public override bool Equals(object obj)
     {
-        if (obj == null || GetType() != obj.GetType())
-        {
-            return false;
-        }
+        if (obj == null) return false;
+        if (obj is not Item) return false;
         Item item = obj as Item;
-        return item.row.Equals(row) && item.col.Equals(col) && item.data.Equals(data);
+        return item.row == row && item.col == col && item.data == data;
     }
 
     // 填入相同数据不相同时

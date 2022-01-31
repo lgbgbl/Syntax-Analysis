@@ -44,12 +44,9 @@ class PublicFunc
     protected List<string> GetValuesByKey(string key, List<Production> productions)
     {
         foreach (Production production in productions)
-        {
-            if (production.Key.Equals(key))
-            {
+            if (production.Key == key)
                 return production.Values;
-            }
-        }
+
         return null;
     }
 

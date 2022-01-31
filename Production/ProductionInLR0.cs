@@ -10,8 +10,10 @@ class ProductionInLR0 : Production
 
     public override bool Equals(object obj)
     {
+        if (obj == null) { return false; }
+        if (obj is not ProductionInLR0) { return false; }
         ProductionInLR0 production = obj as ProductionInLR0;
-        return production.PointPos == pointPos && base.Equals(production);
+        return base.Equals(production) && production.PointPos == pointPos;
     }
 
     public override int GetHashCode() { return base.GetHashCode() + pointPos; }

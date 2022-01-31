@@ -29,7 +29,8 @@ public class Production
     }
     public override bool Equals(object obj)
     {
-        if (obj == null || !(obj is Production)) { return false; }
+        if (obj == null) { return false; }
+        if (obj is not Production) { return false; }
 
         Production production = obj as Production;
         if (!production.Key.Equals(Key)) { return false; }

@@ -26,6 +26,9 @@ class ProductionInLR1 : ProductionInLR0
 
     public override bool Equals(object obj)
     {
+        if (obj == null) return false;
+        if (obj is not ProductionInLR1) return false;
+
         ProductionInLR1 production = obj as ProductionInLR1;
         return
             base.Equals(obj) &&

@@ -11,13 +11,11 @@ class Degree
 
     public override bool Equals(object obj)
     {
-        if (obj == null || GetType() != obj.GetType())
-        {
-            return false;
-        }
+        if (obj == null) return false;
+        if (obj is not Degree) return false;
 
         Degree degree = obj as Degree;
-        return degreeOut.Equals(degree.degreeOut) && translation.Equals(degree.translation);
+        return degreeOut == degree.degreeOut && translation == degree.translation;
     }
 
     public override int GetHashCode() { return degreeOut.GetHashCode() + translation.GetHashCode(); }
