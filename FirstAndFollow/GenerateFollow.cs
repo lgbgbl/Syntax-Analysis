@@ -31,12 +31,9 @@ class GenerateFollow : PublicFunc
                             {
                                 changeTotal++;
                             }
-                            if (hasEpsilon)
+                            if (hasEpsilon && ExtendElement(valuesInFollow, valuesOfTokenInFollow))
                             {
-                                if (ExtendElement(valuesInFollow, valuesOfTokenInFollow))
-                                {
-                                    changeTotal++;
-                                }
+                                changeTotal++;
                             }
                         }
                         else if (ExtendElement(valuesInFollow, valuesOfTokenInFollow))

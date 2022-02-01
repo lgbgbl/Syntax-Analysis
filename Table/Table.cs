@@ -7,7 +7,7 @@ class ConflictException : Exception
 
         if (oldData != null && item.data != null && item != null)
         {
-            reason = string.Format("失败原因： [{0},{1}] 项", item.row, item.col);
+            reason = string.Format("失败原因: [{0},{1}] 项", item.row, item.col);
             if (isLRTable)
             {
                 if (oldData[0] == 'r' && item.data[0] == 'r')
@@ -23,6 +23,7 @@ class ConflictException : Exception
         }
     }
 }
+
 public class Item
 {
     public string row;

@@ -18,7 +18,6 @@ public class Production
     public Production(string productionStr)
     {
         MatchCollection mc = Regex.Matches(productionStr, @"(.*?)\s*\-+>\s*(.*)\s*$");
-        // 
         if (mc.Count > 0)
         {
             Match m = mc[0];
@@ -27,6 +26,7 @@ public class Production
             values.AddRange(m.Groups[2].ToString().Split(' '));
         }
     }
+
     public override bool Equals(object obj)
     {
         if (obj == null) { return false; }

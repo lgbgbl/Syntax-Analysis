@@ -118,13 +118,9 @@ class GenerateFirst : PublicFunc
             }
 
             if (!hasEpsilon)
-            {
                 break;
-            }
-            else if (i == src.Count - 1)
-            {
+            if (i == src.Count - 1)
                 generatedList.Add(EPSILON);
-            }
         }
         return generatedList;
     }

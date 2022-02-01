@@ -10,19 +10,16 @@ class LR1Table : LRTable
         if (production.Key == inputGrammer.nonTerminalTokens[0])
         {
             table.Add(new Item(row, PublicFunc.ENDSYMBOL, PublicFunc.ACCOMPLISH));
+            return;
         }
-        else
+
+        ProductionInLR1 newProduction = production as ProductionInLR1;
+        foreach (string token in newProduction.searchTokens)
         {
-            ProductionInLR1 newProduction = production as ProductionInLR1;
-            foreach (string token in newProduction.searchTokens)
-            {
-                Item item = new Item(row, token, "r" + Convert.ToString(inputGrammer.userProductions.IndexOf(newProduction)));
-                checkConflict(item);
-                if (!table.Contains(item))
-                {
-                    table.Add(item);
-                }
-            }
+            Item item = new Item(row, token, "r" + Convert.ToString(inputGrammer.userProductions.IndexOf(newProduction)));
+            checkConflict(item);
+            if (!table.Contains(item))
+                table.Add(item);
         }
     }
 }

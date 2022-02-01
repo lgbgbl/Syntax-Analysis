@@ -15,17 +15,16 @@ class SLR1Table : LRTable
         if (production.Key == inputGrammer.nonTerminalTokens[0])
         {
             table.Add(new Item(row, PublicFunc.ENDSYMBOL, PublicFunc.ACCOMPLISH));
+            return;
         }
-        else
+
+        foreach (string token in generatedFollow[production.Key])
         {
-            foreach (string token in generatedFollow[production.Key])
+            Item item = new Item(row, token, "r" + Convert.ToString(inputGrammer.userProductions.IndexOf(production)));
+            checkConflict(item);
+            if (!table.Contains(item))
             {
-                Item item = new Item(row, token, "r" + Convert.ToString(inputGrammer.userProductions.IndexOf(production)));
-                checkConflict(item);
-                if (!table.Contains(item))
-                {
-                    table.Add(item);
-                }
+                table.Add(item);
             }
         }
     }

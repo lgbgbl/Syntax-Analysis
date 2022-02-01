@@ -41,6 +41,7 @@ class ProductionInLR0 : Production
     {
         this.pointPos = production.PointPos;
     }
+
     public string NextTokenOfPoint
     {
         get

@@ -1,5 +1,6 @@
 using System.Text;
 namespace SyntaxAnalysis;
+
 class ExpandException : Exception { public ExpandException(string msg) : base(msg) { } }
 
 class Degree

@@ -13,7 +13,7 @@ abstract class LRTable : Table
         foreach (DFANode node in dFAGraph.GetDFANodes)
         {
             string ID = node.ID;
-            foreach (var degree in node.degrees)
+            foreach (Degree degree in node.degrees)
             {
                 string dstID = degree.degreeOut;
 
