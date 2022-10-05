@@ -80,9 +80,9 @@ F -> ( E ) | i
 │   ├── LRTable.cs
 │   ├── SLR1Table.cs
 │   └── Table.cs
-└── 示例文法
-    ├── Tiny语言文法.txt
-    └── 示例文法.txt
+└── testdata
+    ├── tiny_language.txt
+    └── testdata.txt
 ```
 
 ### 其他
