@@ -1,10 +1,10 @@
 namespace SyntaxAnalysis;
 class PublicFunc
 {
-    public static string EPSILON = "~";
-    public static string ENDSYMBOL = "$";
-    public static string POINTSYMBOL = ".";
-    public static string ACCOMPLISH = "acc";
+    public const string EPSILON = "~";
+    public const string ENDSYMBOL = "$";
+    public const string POINTSYMBOL = ".";
+    public const string ACCOMPLISH = "acc";
 
 
     protected bool ExtendElement(List<string> src, List<string> dst)
