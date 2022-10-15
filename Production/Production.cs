@@ -9,6 +9,8 @@ public class Production
     public string Key { get { return key; } }
     public List<string> Values { get { return values; } }
 
+    private static readonly Regex productionReg = new Regex(@"(.*?)\s*\-+>\s*(.*)\s*$");
+
     public Production(string key, List<string> values)
     {
         this.key = key;
@@ -17,7 +19,7 @@ public class Production
 
     public Production(string productionStr)
     {
-        MatchCollection mc = Regex.Matches(productionStr, @"(.*?)\s*\-+>\s*(.*)\s*$");
+        MatchCollection mc = productionReg.Matches(productionStr);
         if (mc.Count > 0)
         {
             Match m = mc[0];
