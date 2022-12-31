@@ -32,6 +32,7 @@ public class Item
 
     public override bool Equals(object obj)
     {
+        if (this == obj) return true;
         if (obj == null) return false;
         if (obj is not Item) return false;
         Item item = obj as Item;

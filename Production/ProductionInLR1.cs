@@ -26,6 +26,7 @@ class ProductionInLR1 : ProductionInLR0
 
     public override bool Equals(object obj)
     {
+        if (this == obj) return true;
         if (obj == null) return false;
         if (obj is not ProductionInLR1) return false;
 

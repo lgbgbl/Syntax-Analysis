@@ -12,6 +12,7 @@ class Degree
 
     public override bool Equals(object obj)
     {
+        if (this == obj) return true;
         if (obj == null) return false;
         if (obj is not Degree) return false;
 
